@@ -44,10 +44,9 @@ module.exports = env => {
         filename: 'index.html',
         chunks: ['index']
       }),
-      env.mode === 'production' &&
-        new CopyPlugin({
-          patterns: [{ from: 'public', to: '', noErrorOnMissing: true }]
-        })
+      new CopyPlugin({
+        patterns: [{ from: 'public', to: '', noErrorOnMissing: true }]
+      })
     ],
     module: {
       rules: [
