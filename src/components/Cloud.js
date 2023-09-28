@@ -1,12 +1,29 @@
-import React from 'react'
+import React, { useRef, Fragment } from 'react'
 import * as THREE from 'three'
+import { useFrame } from '@react-three/fiber'
 import { Clouds, Cloud } from '@react-three/drei'
 
 export default props => {
+  const ref = useRef(null)
+  const ref2 = useRef(null)
+
+  useFrame((state, delta) => {
+    ref.current.rotation.x = state.clock.elapsedTime * 0.03
+    ref2.current.rotation.x = state.clock.elapsedTime * -0.03
+  })
+
   return (
-    <Clouds material={THREE.MeshBasicMaterial}>
-      <Cloud segments={40} bounds={[10, 2, 2]} volume={10} color="blue" />
-      <Cloud seed={1} scale={2} volume={5} color="orange" fade={100} />
-    </Clouds>
+    <Fragment>
+      <group ref={ref}>
+        <Clouds material={THREE.MeshBasicMaterial}>
+          <Cloud segments={40} bounds={[10, 3, 2]} volume={10} color="blue" />
+        </Clouds>
+      </group>
+      <group ref={ref2}>
+        <Clouds material={THREE.MeshBasicMaterial}>
+          <Cloud segments={40} bounds={[10, 3, 2]} volume={10} color="blue" />
+        </Clouds>
+      </group>
+    </Fragment>
   )
 }
