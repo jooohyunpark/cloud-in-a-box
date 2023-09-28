@@ -1,17 +1,13 @@
 import React, { Suspense } from 'react'
+import * as THREE from 'three'
 import { Canvas } from '@react-three/fiber'
 import {
   OrbitControls,
-  Stage,
   PerspectiveCamera,
-  Environment,
   Preload,
-  Loader
+  Clouds,
+  Cloud
 } from '@react-three/drei'
-
-import Buddha from '@/components/Buddha'
-import IMac from '@/components/IMac'
-import studio from '@/assets/image/studio.hdr'
 
 import '@/styles/main.scss'
 
@@ -37,36 +33,18 @@ const App = () => {
           zoomSpeed={0.5}
           maxPolarAngle={Math.PI * 0.5}
           minDistance={30}
-          maxDistance={120}
+          maxDistance={100}
         />
 
         <ambientLight intensity={1} />
 
-        <Suspense fallback={null}>
-          <Stage
-            adjustCamera={false}
-            intensity={1}
-            preset="soft"
-            environment={null}
-          >
-            <Environment files={studio} />
-
-            <group>
-              <IMac />
-              <Buddha />
-            </group>
-          </Stage>
-        </Suspense>
+        <Clouds material={THREE.MeshBasicMaterial}>
+          <Cloud segments={40} bounds={[10, 2, 2]} volume={10} color="orange" />
+          <Cloud seed={1} scale={2} volume={5} color="white" fade={100} />
+        </Clouds>
 
         <Preload all />
       </Canvas>
-
-      <Loader
-        containerStyles={{ background: 'white' }}
-        innerStyles={{ background: '#d8d8d8' }}
-        barStyles={{ background: 'black' }}
-        dataStyles={{ display: 'none' }}
-      />
     </main>
   )
 }
