@@ -25,8 +25,8 @@ const App = () => {
           dampingFactor={0.05}
           rotateSpeed={0.5}
           zoomSpeed={0.5}
-          maxPolarAngle={Math.PI * 0.5}
-          minDistance={30}
+          // maxPolarAngle={Math.PI * 0.5}
+          minDistance={50}
           maxDistance={100}
         />
 
