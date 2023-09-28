@@ -8,8 +8,8 @@ export default props => {
   const ref2 = useRef(null)
 
   useFrame((state, delta) => {
-    ref.current.rotation.x = state.clock.elapsedTime * 0.03
-    ref2.current.rotation.x = state.clock.elapsedTime * -0.03
+    ref.current.rotation.x = state.clock.elapsedTime * 0.07
+    ref2.current.rotation.x = state.clock.elapsedTime * -0.07
   })
 
   return (
