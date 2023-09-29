@@ -15,7 +15,7 @@ export default props => {
   return (
     <Fragment>
       <group ref={ref1}>
-        <Clouds material={THREE.MeshBasicMaterial} castShadow>
+        <Clouds material={THREE.MeshBasicMaterial}>
           <Cloud
             segments={40}
             bounds={[10, 3, 2]}

@@ -1,17 +1,21 @@
 import React from 'react'
 import * as THREE from 'three'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
+import {
+  OrbitControls,
+  PerspectiveCamera,
+  MeshReflectorMaterial
+} from '@react-three/drei'
 import Box from '@/components/Box'
 import Cloud from '@/components/Cloud'
-import { LayerMaterial, Color, Depth } from 'lamina'
+import Shadow from '@/components/Shadow'
 
 import '@/styles/main.scss'
 
 const App = () => {
   return (
     <main>
-      <Canvas>
+      <Canvas flat shadows>
         <color attach="background" args={['white']} />
 
         <PerspectiveCamera
@@ -28,31 +32,17 @@ const App = () => {
           dampingFactor={0.05}
           rotateSpeed={0.5}
           zoomSpeed={0.5}
-          // maxPolarAngle={Math.PI * 0.5}
+          maxPolarAngle={Math.PI * 0.5}
           minDistance={50}
-          maxDistance={100}
+          maxDistance={150}
         />
 
-        {/* <ambientLight intensity={1} /> */}
+        <ambientLight intensity={1} />
+
+        <Shadow />
 
         <Box />
         <Cloud />
-
-        <mesh scale={100}>
-          <sphereGeometry args={[1, 128, 128]} />
-          <LayerMaterial side={THREE.BackSide}>
-            <Color color="#fff" alpha={1} mode="normal" />
-            <Depth
-              colorA="red"
-              colorB="blue"
-              alpha={1}
-              mode="normal"
-              near={0}
-              far={300}
-              origin={[100, 100, 100]}
-            />
-          </LayerMaterial>
-        </mesh>
       </Canvas>
     </main>
   )
