@@ -1,18 +1,17 @@
 import React from 'react'
+import * as THREE from 'three'
 import { Canvas } from '@react-three/fiber'
-import {
-  OrbitControls,
-  PerspectiveCamera,
-  SoftShadows
-} from '@react-three/drei'
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
 import Box from '@/components/Box'
 import Cloud from '@/components/Cloud'
+import { LayerMaterial, Color, Depth } from 'lamina'
+
 import '@/styles/main.scss'
 
 const App = () => {
   return (
     <main>
-      <Canvas shadows linear flat>
+      <Canvas>
         <color attach="background" args={['white']} />
 
         <PerspectiveCamera
@@ -34,32 +33,26 @@ const App = () => {
           maxDistance={150}
         />
 
-        <ambientLight intensity={1} />
-        <directionalLight
-          castShadow
-          position={[0, 30, 0]}
-          intensity={1.5}
-          shadow-mapSize={1024}
-        >
-          <orthographicCamera
-            attach="shadow-camera"
-            args={[-20, 20, -20, 20, 0.1, 50]}
-          />
-        </directionalLight>
-
-        <mesh
-          rotation={[-Math.PI / 2, 0, 0]}
-          position={[0, -15.1, 0]}
-          receiveShadow
-        >
-          <planeGeometry args={[100, 100]} />
-          <shadowMaterial transparent opacity={0.4} color="blue" />
-        </mesh>
+        {/* <ambientLight intensity={1} /> */}
 
         <Box />
         <Cloud />
 
-        <SoftShadows />
+        <mesh scale={100}>
+          <sphereGeometry args={[1, 128, 128]} />
+          <LayerMaterial side={THREE.BackSide}>
+            <Color color="#fff" alpha={1} mode="normal" />
+            <Depth
+              colorA="red"
+              colorB="blue"
+              alpha={0.5}
+              mode="normal"
+              near={0}
+              far={300}
+              origin={[100, 100, 100]}
+            />
+          </LayerMaterial>
+        </mesh>
       </Canvas>
     </main>
   )

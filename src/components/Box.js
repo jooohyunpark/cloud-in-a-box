@@ -9,9 +9,11 @@ export default props => {
       <MeshTransmissionMaterial
         resolution={2048}
         distortion={0}
-        color="#ffffff"
+        color={'#ffffff'}
+        bg={'#0000ff'}
         thickness={0.1}
         anisotropy={0}
+        roughness={0}
       />
     </mesh>
   )
