@@ -4,7 +4,7 @@ import { MeshTransmissionMaterial } from '@react-three/drei'
 
 export default props => {
   return (
-    <mesh scale={30}>
+    <mesh scale={30} castShadow>
       <boxGeometry args={[1, 1, 1]} />
       <MeshTransmissionMaterial
         resolution={2048}

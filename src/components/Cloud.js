@@ -15,7 +15,7 @@ export default props => {
   return (
     <Fragment>
       <group ref={ref}>
-        <Clouds material={THREE.MeshBasicMaterial}>
+        <Clouds material={THREE.MeshBasicMaterial} castShadow>
           <Cloud segments={40} bounds={[10, 3, 2]} volume={10} color="blue" />
         </Clouds>
       </group>
