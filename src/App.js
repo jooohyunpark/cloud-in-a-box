@@ -30,7 +30,7 @@ const App = () => {
           zoomSpeed={0.5}
           // maxPolarAngle={Math.PI * 0.5}
           minDistance={50}
-          maxDistance={150}
+          maxDistance={100}
         />
 
         {/* <ambientLight intensity={1} /> */}
@@ -45,7 +45,7 @@ const App = () => {
             <Depth
               colorA="red"
               colorB="blue"
-              alpha={0.5}
+              alpha={1}
               mode="normal"
               near={0}
               far={300}
