@@ -1,5 +1,4 @@
 import React from 'react'
-import * as THREE from 'three'
 import { MeshTransmissionMaterial } from '@react-three/drei'
 
 export default props => {
@@ -11,9 +10,11 @@ export default props => {
         distortion={0}
         color={'#ffffff'}
         bg={'#0000ff'}
-        thickness={0.1}
+        thickness={0}
         anisotropy={0}
         roughness={0}
+        // clearcoat={1}
+        // ior={1.5}
       />
     </mesh>
   )

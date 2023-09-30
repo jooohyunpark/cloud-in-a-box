@@ -4,7 +4,7 @@ import { Canvas } from '@react-three/fiber'
 import {
   OrbitControls,
   PerspectiveCamera,
-  MeshReflectorMaterial
+  Environment
 } from '@react-three/drei'
 import Box from '@/components/Box'
 import Cloud from '@/components/Cloud'
@@ -40,6 +40,8 @@ const App = () => {
         <ambientLight intensity={1} />
 
         <Shadow />
+
+        <Environment files="/sky.hdr" blur={1} />
 
         <Box />
         <Cloud />
