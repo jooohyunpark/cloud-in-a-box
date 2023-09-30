@@ -19,10 +19,10 @@ const App = () => {
         <color attach="background" args={['white']} />
 
         <PerspectiveCamera
-          position={[70, 10, -50]}
+          position={[0, 0, 100]}
           near={1}
           far={1000}
-          fov={50}
+          fov={35}
           makeDefault
         />
 
