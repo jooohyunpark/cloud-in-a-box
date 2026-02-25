@@ -72,13 +72,6 @@ module.exports = env => {
               : ['style-loader', 'css-loader']
         },
         {
-          test: /\.s[ac]ss$/i,
-          use:
-            env.mode === 'production'
-              ? [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-              : ['style-loader', 'css-loader', 'sass-loader']
-        },
-        {
           test: /\.(png|jpe?g|gif|svg|hdr)$/i,
           use: [
             {

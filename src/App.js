@@ -10,7 +10,7 @@ import Box from '@/components/Box'
 import Cloud from '@/components/Cloud'
 import Shadow from '@/components/Shadow'
 
-import '@/styles/main.scss'
+import '@/styles/main.css'
 
 const App = () => {
   return (
